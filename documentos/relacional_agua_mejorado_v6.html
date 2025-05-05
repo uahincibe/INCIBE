@@ -1,0 +1,323 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <title>Taxonomía Interactiva de Riesgos</title>
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <style>
+        h1 {
+            text-align: center;
+            font-weight: bold;
+            font-size: 2em;
+            margin-bottom: 10px; /* Reducido el margen inferior del título */
+        }
+        hr {
+            margin-bottom: 20px;
+        }
+        .node circle {
+            fill: #fff;
+            stroke: steelblue;
+            stroke-width: 3px;
+        }
+        .node text { font: 12px sans-serif; }
+        .link {
+            fill: none;
+            stroke: #ccc;
+            stroke-width: 2px;
+        }
+        .node-label {
+          font-size: 10px;
+          font-family: sans-serif;
+          text-anchor: middle;
+          dominant-baseline: middle;
+          cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <h1>Framework de Ciberseguridad y Protección de Infraestructuras Críticas del Agua</h1>
+    <hr>
+    <svg width="1800" height="900"></svg>
+    <script>
+        var treeData = 
+    {
+        "name": "Ciberseguridad y Protección de\nInfraestructuras Críticas del Agua",
+        "children": [
+            {"name": "Tipos de Infraestructuras Críticas del Agua", "children": [
+                {"name": "Plantas de Tratamiento de Agua Potable (PTAP)"},
+                {"name": "Plantas de Tratamiento de Aguas Residuales (PTAR)"},
+                {"name": "Redes de Distribución de Agua"},
+                {"name": "Presas y Embalses"},
+                {"name": "Sistemas de Riego"},
+                {"name": "Plantas Desalinizadoras"},
+                {"name": "Sistemas de Control de Inundaciones"},
+            ]},
+            {"name": "Sistemas y Tecnologías Vulnerables", "children": [
+                {"name": "Sistemas SCADA"},
+                {"name": "Dispositivos IoT Industriales (IIoT)"},
+                {"name": "PLC (Controladores Lógicos Programables)"},
+                {"name": "Redes de Comunicación Industrial"},
+                {"name": "Sistemas de Gestión de Información"},
+                {"name": "Sistemas de Telemetría y Control Remoto"},
+                {"name": "Sistemas de Seguridad Física"},
+            ]},
+            {"name": "Tipos de Amenazas", "children": [
+                {"name": "Ataques Cibernéticos", "children": [
+                    {"name": "Malware (Ransomware, Virus, Troyanos, etc.)"},
+                    {"name": "Ataques de Denegación de Servicio (DoS/DDoS)"},
+                    {"name": "Phishing y Spear-Phishing"},
+                    {"name": "Inyección SQL"},
+                    {"name": "Ataques de Intermediario (Man-in-the-Middle)"},
+                    {"name": "Explotación de Vulnerabilidades"},
+                    {"name": "Ataques a la Cadena de Suministro"},
+                    {"name": "Amenazas Internas"},
+                ]},
+                {"name": "Amenazas Físicas", "children":[
+                    {"name": "Sabotaje"},
+                    {"name": "Robo"},
+                    {"name": "Desastres naturales"}
+                ]},
+                {"name": "Amenazas Operacionales", "children":[
+                    {"name": "Fallos de Equipos"},
+                    {"name": "Errores de Configuración"}
+                ]}
+            ]},
+            {"name": "Vectores de Ataque", "children": [
+                {"name": "Redes Corporativas Conectadas"},
+                {"name": "Dispositivos USB Infectados"},
+                {"name": "Acceso Remoto No Autorizado"},
+                {"name": "Software Desactualizado"},
+                {"name": "Contraseñas Débiles"},
+                {"name": "Falta de Segmentación de Red"},
+                {"name": "Ingeniería Social"},
+            ]},
+            {"name": "Motivaciones de los Atacantes", "children": [
+                {"name": "Ciberespionaje Industrial"},
+                {"name": "Cibercrimen"},
+                {"name": "Hacktivismo"},
+                {"name": "Terrorismo"},
+                {"name": "Guerra Cibernética"},
+                {"name": "Venganza"}
+            ]},
+            {"name": "Impactos Potenciales", "children": [
+                {"name": "Interrupción del Servicio"},
+                {"name": "Contaminación del Agua"},
+                {"name": "Daños a la Infraestructura"},
+                {"name": "Pérdidas Económicas"},
+                {"name": "Daño a la Reputación"},
+                {"name": "Impacto en la Salud Pública"},
+                {"name": "Impacto Ambiental"},
+                {"name": "Violación de datos"}
+            ]},
+            {"name": "Medidas de Mitigación y Controles", "children": [
+                {"name": "Técnicas", "children":[
+                    {"name": "Firewalls"},
+                    {"name": "IDS/IPS"},
+                    {"name": "Segmentación de red"},
+                    {"name": "Cifrado"}
+                ]},
+                {"name": "Organizativas", "children":[
+                    {"name": "Políticas de seguridad"},
+                    {"name": "Planes de respuesta a incidentes"},
+                    {"name": "Capacitación del Personal"}
+                ]},
+                {"name": "Legales y Normativas", "children":[
+                    {"name": "Normativas Internacionales", "children": [
+                        {"name": "NIS 2 Directive (EU 2022/2555)"},
+                        {"name": "ISO/IEC 27001"},
+                        {"name": "ISO 22301"},
+                        {"name": "ISO 31000"},
+                        {"name": "ISA/IEC 62443"},
+                        {"name": "Directiva 2008/114/CE"},
+                        {"name": "Reglamento Europeo de Protección de Datos (GDPR - UE 2016/679)"},
+                    ]},
+                    {"name": "Normativas y Marcos\nRegulatorios de \"EE.UU.\"", "children": [
+                        {"name": "Presidential Policy Directive 21 (PPD-21)"},
+                        {"name": "Cybersecurity & Infrastructure Security Agency (CISA) Guidelines"},
+                        {"name": "Water Infrastructure Act (WIA) de 2018"},
+                        {"name": "Safe Drinking Water Act (SDWA)"},
+                        {"name": "American Water Infrastructure Act (AWIA) de 2018"},
+                    ]},
+                    {"name": "Normativas en España", "children": [
+                        {"name": "Ley 8/2011 de Protección de Infraestructuras Críticas"},
+                        {"name": "Real Decreto 43/2021"},
+                        {"name": "Esquema Nacional de Seguridad (ENS - Real Decreto 311/2022)"},
+                        {"name": "Plan Nacional de Protección de Infraestructuras Críticas (PNPIC)"},
+                    ]},
+                ]},
+            ]},
+        ]
+    }
+    ;
+        var margin = {top: 20, right: 120, bottom: 40, left: 250}, /* Ajustados los márgenes */
+            width = 1800 - margin.left - margin.right,
+            height = 900 - margin.top - margin.bottom;
+        var svg = d3.select("svg")
+            .attr("width", width + margin.left + margin.right)
+            .attr("height", height + margin.top + margin.bottom)
+          .append("g")
+            .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+        var i = 0, duration = 750, root;
+
+        var treemap = d3.tree().size([height, width]);
+        root = d3.hierarchy(treeData, function(d) { return d.children; });
+        root.x0 = height / 2;
+        root.y0 = 0;
+        function collapse(d) {
+            if (d.children) {
+                d._children = d.children;
+                d._children.forEach(collapse);
+                d.children = null;
+            }
+        }
+        root.children.forEach(collapse);
+        update(root);
+
+        function update(source) {
+            var treeData = treemap(root);
+            var nodes = treeData.descendants(),
+                links = treeData.descendants().slice(1);
+            nodes.forEach(function(d){
+                d.y = d.depth * 260;  // Espaciado horizontal básico
+
+                // Espacio vertical extra para los hijos de "Legales y Normativas"
+                if (d.parent && d.parent.data.name === "Legales y Normativas") {
+                    const index = d.parent.children ? d.parent.children.indexOf(d) : d.parent._children.indexOf(d);
+                    if (index > 0) {
+                        d.x = d.parent.children ? d.parent.children[0].x + (index * 40) : d.parent._children[0].x + (index * 40); // Aumentado a 40
+                    }
+                }
+
+                // Espacio vertical extra para "Normativas Internacionales" y "Normativas en España"
+                if (d.parent && d.parent.data.name === "Medidas de Mitigación y Controles" &&
+                    (d.data.name === "Normativas Internacionales" || d.data.name === "Normativas en España")) {
+                    const eeuuNode = d.parent.children ? d.parent.children.find(child => child.data.name === "Normativas y Marcos\nRegulatorios de \"EE.UU.\"") :
+                                                      d.parent._children ? d.parent._children.find(child => child.data.name === "Normativas y Marcos\nRegulatorios de \"EE.UU.\"") : null;
+                    if (eeuuNode && (eeuuNode.children || eeuuNode._children)) {
+                        if (eeuuNode.children && d.data.name === "Normativas en España") {
+                            const eeuuLastChild = eeuuNode.children[eeuuNode.children.length - 1];
+                            if (eeuuLastChild) {
+                                d.x = Math.max(d.x, eeuuLastChild.x + 40); // Asegurar espacio debajo del último hijo de EEUU
+                            }
+                        } else if (eeuuNode._children && d.data.name === "Normativas en España") {
+                            // Si EEUU está colapsado, no necesitamos espacio extra aquí
+                        } else if (eeuuNode.children && d.data.name === "Normativas Internacionales") {
+                            // No necesitamos espacio extra encima de EEUU
+                        }
+                    }
+                }
+
+                // Desplazar hijos de "Ataques Cibernéticos", "Amenazas Físicas" y "Amenazas Operacionales" a la derecha
+                if (d.parent && (d.parent.data.name === "Ataques Cibernéticos" ||
+                                 d.parent.data.name === "Amenazas Físicas" ||
+                                 d.parent.data.name === "Amenazas Operacionales")) {
+                    d.y += 60; // Ajusta este valor según sea necesario
+                }
+            });
+            var node = svg.selectAll('g.node')
+                .data(nodes, function(d) {return d.id || (d.id = ++i); });
+            var nodeEnter = node.enter().append('g')
+                .attr('class', 'node')
+                .attr("transform", function(d) {
+                    return "translate(" + source.y0 + "," + source.x0 + ")";
+                })
+                .on('click', click);
+
+            nodeEnter.append('circle')
+                .attr('class', 'node')
+                .attr('r', 1e-6)
+                .style("fill", function(d) {
+                    return d._children ? "lightsteelblue" : "#fff";
+                });
+            nodeEnter.append('text')
+                .attr("dy", ".35em")
+                .attr("x", function(d) {
+                    return d.children || d._children ? -13 : 13;
+                })
+                .attr("text-anchor", function(d) {
+                    return d.children || d._children ? "end" : "start";
+                })
+                .selectAll("tspan")
+                .data(function(d) { return d.data.name.split("\n"); })
+                .enter().append("tspan")
+                .attr("x", function(d) {
+                    var parent = d3.select(this.parentNode).datum();
+                    return parent.children || parent._children ? -13 : 13;
+                })
+                .attr("dy", function(d, i) { return i ? "1.2em" : "0"; })
+                .attr("text-anchor", function(d) {
+                    var parent = d3.select(this.parentNode).datum();
+                    return parent.children || parent._children ? "end" : "start";
+                })
+                .text(function(d) { return d; });
+
+            var nodeUpdate = nodeEnter.merge(node);
+            nodeUpdate.transition()
+                .duration(duration)
+                .attr("transform", function(d) {
+                    return "translate(" + d.y + "," + d.x + ")";
+                });
+            nodeUpdate.select('circle.node')
+                .attr('r', 10)
+                .style("fill", function(d) {
+                    return d._children ? "lightsteelblue" : "#fff";
+                })
+                .attr('cursor', 'pointer');
+            var nodeExit = node.exit().transition()
+                .duration(duration)
+                .attr("transform", function(d) {
+                    return "translate(" + source.y + "," + source.x + ")";
+                })
+                .remove();
+            nodeExit.select('circle')
+                .attr('r', 1e-6);
+            nodeExit.select('text')
+                .style('fill-opacity', 1e-6);
+            var link = svg.selectAll('path.link')
+                .data(links, function(d) { return d.id; });
+            var linkEnter = link.enter().insert('path', "g")
+                .attr("class", "link")
+                .attr('d', function(d){
+                    var o = {x: source.x0, y: source.y0}
+                    return diagonal(o, o)
+                });
+
+            var linkUpdate = linkEnter.merge(link);
+            linkUpdate.transition()
+                .duration(duration)
+                .attr('d', function(d){ return diagonal(d, d.parent) });
+            var linkExit = link.exit().transition()
+                .duration(duration)
+                .attr('d', function(d) {
+                    var o = {x: source.x, y: source.y}
+                    return diagonal(o, o)
+                })
+                .remove();
+            nodes.forEach(function(d){
+                d.x0 = d.x;
+                d.y0 = d.y;
+            });
+            function diagonal(s, d) {
+                path = `M ${s.y} ${s.x}
+                        C ${(s.y + d.y) / 2} ${s.x},
+                          ${(s.y + d.y) / 2} ${d.x},
+                          ${d.y} ${d.x}`
+                return path
+            }
+
+            function click(event, d) {
+                if (d.children) {
+                    d._children = d.children;
+                    d.children = null;
+                } else {
+                    d.children = d._children;
+                    d._children = null;
+                }
+                update(d);
+            }
+        }
+    </script>
+</body>
+</html>
+    
